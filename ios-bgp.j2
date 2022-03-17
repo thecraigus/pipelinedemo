@@ -1,0 +1,32 @@
+<router>
+    <bgp xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-bgp">
+    <id>{{ globals.local_asn }}</id>
+    <bgp>
+        <bestpath>
+        <compare-routerid/>
+        </bestpath>
+        <log-neighbor-changes>true</log-neighbor-changes>
+        <router-id>
+        <ip-id>{{ globals.local_rid }}</ip-id>
+        </router-id>
+    </bgp>
+        {%- for neighbor in bgp_neighbors %}
+        <neighbor>
+            <id>{{ bgp_neighbors[neighbor].prefix }}</id>
+            <remote-as> {{ bgp_neighbors[neighbor].remoteasn }}</remote-as>
+            <log-neighbor-changes>
+            </log-neighbor-changes>
+            <timers>
+            <keepalive-interval>{{bgp_neighbors[neighbor].keepalive}}</keepalive-interval>
+            <holdtime>{{bgp_neighbors[neighbor].holdtime}}</holdtime>
+            </timers>
+            <transport>
+            <connection-mode>active</connection-mode>
+            <path-mtu-discovery>
+                <disable/>
+            </path-mtu-discovery>
+            </transport>
+        </neighbor>
+    {%- endfor %}
+    </bgp>
+</router>

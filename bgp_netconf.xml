@@ -1,0 +1,46 @@
+<router>
+    <bgp xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-bgp">
+    <id>65000</id>
+    <bgp>
+        <bestpath>
+        <compare-routerid/>
+        </bestpath>
+        <log-neighbor-changes>true</log-neighbor-changes>
+        <router-id>
+        <ip-id>55.55.55.55</ip-id>
+        </router-id>
+    </bgp>
+        <neighbor>
+            <id>1.1.1.1</id>
+            <remote-as> 65010</remote-as>
+            <log-neighbor-changes>
+            </log-neighbor-changes>
+            <timers>
+            <keepalive-interval>30</keepalive-interval>
+            <holdtime>90</holdtime>
+            </timers>
+            <transport>
+            <connection-mode>active</connection-mode>
+            <path-mtu-discovery>
+                <disable/>
+            </path-mtu-discovery>
+            </transport>
+        </neighbor>
+        <neighbor>
+            <id>2.2.2.2</id>
+            <remote-as> 65011</remote-as>
+            <log-neighbor-changes>
+            </log-neighbor-changes>
+            <timers>
+            <keepalive-interval>30</keepalive-interval>
+            <holdtime>90</holdtime>
+            </timers>
+            <transport>
+            <connection-mode>active</connection-mode>
+            <path-mtu-discovery>
+                <disable/>
+            </path-mtu-discovery>
+            </transport>
+        </neighbor>
+    </bgp>
+</router>
